@@ -42,8 +42,8 @@ import java.util.*;
 
      private BigDecimal reservePrice;
 
-     @ManyToMany(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST,CascadeType.MERGE })
-     private Set<Category> categories = new HashSet<Category>();
+    @ManyToMany(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST,CascadeType.MERGE })
+    private Set<Category> categories = new HashSet<Category>();
 
     @Transient
 	private User approvedBy;

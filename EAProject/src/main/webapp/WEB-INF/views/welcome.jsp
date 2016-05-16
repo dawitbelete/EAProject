@@ -36,6 +36,9 @@
  					 <a href="<spring:url value='/users' />" class="btn btn-default">
 						<span class="glyphicon-hand-left glyphicon"></span> Go to Community
 					</a>
+					<a href="<spring:url value='/store' />" class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span> Go to Shop
+					</a>
 				</div>	
 	 			<div class="pull-left"> <h3>${SpecialBlurb}</h3> </div>
 		</div>	
