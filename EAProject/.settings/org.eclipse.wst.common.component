@@ -6,6 +6,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/sql"/>
         <property name="java-output-path" value="/EntireMember/target/classes"/>
-        <property name="context-root" value="Lab11"/>
+        <property name="context-root" value="EAProject"/>
     </wb-module>
 </project-modules>
