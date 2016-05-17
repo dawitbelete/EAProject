@@ -6,14 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.mum.dao.GenericDao;
 import edu.mum.dao.AddressDao;
 import edu.mum.domain.Address;
+import edu.mum.service.AddressService;
 
 @Service
 @Transactional 
-public class AddressServiceImpl implements edu.mum.service.AddressService {
-	
+public class AddressServiceImpl implements AddressService {
 	
  	@Autowired
 	private AddressDao memberDao;
@@ -22,18 +21,21 @@ public class AddressServiceImpl implements edu.mum.service.AddressService {
 		memberDao.save(address);
 	}
 	
-	
-    public void update( Address address) {  		
-		memberDao.update(address);
+    public Address update( Address address) {  		
+		return memberDao.update(address);
 	}
-	
 	
 	public List<Address> findAll() {
 		return (List<Address>)memberDao.findAll();
 	}
-
+	
  	public Address findOne(Long id) {
 		return memberDao.findOne(id);
+	}
+
+	public void delete(Long id) {
+		memberDao.delete(id);
+		
 	}
 
 

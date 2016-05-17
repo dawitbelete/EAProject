@@ -4,14 +4,19 @@ import java.util.List;
 
 import edu.mum.domain.Item;
  
-public interface ItemService {
+public interface ItemService{
 
-	public void save(Item Item);
-	public Item update(Item Item);
+	public void save(Item item);
+
+	public Item update(Item item);
+
 	public List<Item> findAll();
-	 
+
+	public Item findOne(Long id);
+
+	public void delete(Long id);
+	
 	public List<Item> findBySellerOrBuyer(Long sellerId,Long buyerId);
 	 
-	public Item findOne(Long id);
 
 }

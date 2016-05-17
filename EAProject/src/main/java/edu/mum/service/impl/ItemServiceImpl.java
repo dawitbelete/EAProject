@@ -6,45 +6,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.mum.dao.GenericDao;
 import edu.mum.dao.ItemDao;
 import edu.mum.domain.Item;
 import edu.mum.service.ItemService;
 
 @Service
-@Transactional 
+@Transactional
 public class ItemServiceImpl implements ItemService {
-	
-	
- 	@Autowired
+
+	@Autowired
 	private ItemDao itemDao;
 
-    public void save( Item Item) {  		
+	public void save(Item Item) {
 		itemDao.save(Item);
 	}
-	
-	
-    public Item update( Item Item) {  		
+
+	public Item update(Item Item) {
 		return itemDao.update(Item);
 	}
-	
-	
+
 	public List<Item> findAll() {
-		return (List<Item>)itemDao.findAll();
+		return (List<Item>) itemDao.findAll();
 	}
 
- 	public Item findOne(Long id) {
+	public Item findOne(Long id) {
 		return itemDao.findOne(id);
 	}
-
-
+	
 	@Override
-	public List<Item> findBySellerOrBuyer(Long sellerId,Long buyerId) {
-		 
-		return itemDao.findBySellerOrBuyer(sellerId,buyerId);
+	public void delete(Long id) {
+		itemDao.delete(id);
+
 	}
 
+	@Override
+	public List<Item> findBySellerOrBuyer(Long sellerId, Long buyerId) {
+
+		return itemDao.findBySellerOrBuyer(sellerId, buyerId);
+	}
 
 	
- 
+
 }

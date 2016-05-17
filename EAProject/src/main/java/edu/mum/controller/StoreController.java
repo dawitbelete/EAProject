@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -12,6 +13,7 @@ import edu.mum.domain.Item;
 import edu.mum.domain.Shipment;
 import edu.mum.domain.User;
 import edu.mum.service.ItemService;
+import edu.mum.service.MessageSender;
 
 @Controller
 @RequestMapping("/store")
@@ -19,6 +21,9 @@ public class StoreController {
 
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	MessageSender topicMessageSender;
  
  	@RequestMapping({"","/all"})
 	public String list(Model model) {
@@ -41,6 +46,14 @@ public class StoreController {
 		model.addAttribute("newShipment", shipment);
 		
 		return "shipment";
+	}
+ 	
+ 	@RequestMapping("/ship")
+	public String sendOrder(@ModelAttribute("newShipment") Shipment shipment) {
+ 		
+ 		topicMessageSender.sendMessage(shipment.getShipmentInfo());
+ 		
+		return "sent";
 	}
  	
  	

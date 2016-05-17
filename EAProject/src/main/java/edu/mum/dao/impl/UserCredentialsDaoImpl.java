@@ -10,9 +10,6 @@ import edu.mum.dao.UserCredentialsDao;
 import edu.mum.domain.UserCredentials;
 
  
-
-
-@SuppressWarnings("unchecked")
 @Repository
 public class UserCredentialsDaoImpl extends GenericDaoImpl<UserCredentials> implements UserCredentialsDao {
 

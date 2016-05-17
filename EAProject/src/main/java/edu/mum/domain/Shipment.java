@@ -1,5 +1,8 @@
 package edu.mum.domain;
 
+import java.time.LocalDate;
+import java.util.Random;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,20 +12,22 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Shipment {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
- 	private long id;
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
 	@OneToOne(fetch = FetchType.EAGER)
 	Item item;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	User user;
-	
+
 	@OneToOne(fetch = FetchType.EAGER)
 	Address address;
-	
+
+	int maxShippingDays = 5;
+
 	String guide;
 
 	public User getUser() {
@@ -55,5 +60,22 @@ public class Shipment {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public ShipmentInfo getShipmentInfo() {
+		ShipmentInfo shippingfo = new ShipmentInfo();
+		shippingfo.setAddresee(this.getUser().getFirstName() + " " + this.getUser().getLastName());
+		shippingfo.setAddress(this.getAddress().getStreet() + "," + this.getAddress().getZipcode() + ","
+				+ this.getAddress().getCity());
+		shippingfo.setClientCompany("GoodFellas Shop");
+		shippingfo.setReference(getReference(1000, 5000));
+		shippingfo.setShipmentdays(5);
+		shippingfo.setFromDate(LocalDate.now());
+		return shippingfo;
+	}
+
+	private static int getReference(int min, int max) {
+		Random r = new Random();
+		return r.ints(min, (max + 1)).findFirst().getAsInt();
 	}
 }

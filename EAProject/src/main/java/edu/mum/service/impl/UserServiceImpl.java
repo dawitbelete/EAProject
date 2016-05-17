@@ -9,56 +9,55 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.mum.dao.UserDao;
 import edu.mum.domain.User;
 import edu.mum.service.UserCredentialsService;
+import edu.mum.service.UserService;
 
 @Service
-@Transactional 
-public class UserServiceImpl implements edu.mum.service.UserService {
-	
- 	@Autowired
-	private UserDao userDao;
- 	
- 	@Autowired
- 	UserCredentialsService credentialsService;
+@Transactional
+public class UserServiceImpl implements UserService {
 
- 	
-     public void save( User user) {  		
-  		userDao.save(user);
- 	}
-  	
-  	
+	@Autowired
+	private UserDao userDao;
+
+	@Autowired
+	UserCredentialsService credentialsService;
+
+	public void save(User user) {
+		userDao.save(user);
+	}
+
+	public User update(User user) {
+		return userDao.update(user);
+
+	}
+
 	public List<User> findAll() {
-		return (List<User>)userDao.findAll();
+		return (List<User>) userDao.findAll();
+	}
+
+	@Override
+	public User findOne(Long id) {
+		return userDao.findOne(id);
+	}
+
+	@Override
+	public void delete(Long id) {
+		userDao.delete(id);
 	}
 
 	public User findByEmail(String email) {
 		return userDao.findByEmail(email);
 	}
-	
-	public User update(User user) {
-		 return userDao.update(user);
 
-	}
-
-	
- 	public User testRefresh(User user) {
+	public User testRefresh(User user) {
 		user.setEmail("Lotta@Doe.com");
-		  userDao.save(user);
-		
-		  return user;
+		userDao.save(user);
+
+		return user;
 	}
 
-
-	@Override
-	public User findOne(Long id) {
-		 
-		return userDao.findOne(id);
+	public void saveFull(User user) {
+		credentialsService.save(user.getUserCredentials());
+		userDao.update(user);
 	}
-	
-	
-  	public void saveFull( User user) {  		
-  		credentialsService.save(user.getUserCredentials());
-  		userDao.update(user);
-  	}
- 
 
 }
