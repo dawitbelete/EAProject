@@ -24,7 +24,7 @@
 
 				<form:errors path="*" cssClass="alert alert-danger" element="div"/>
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="id"> User Id</label>
+					<label class="control-label col-lg-2 col-lg-2" for="id">User Id</label>
 					<div class="col-lg-10">
 						<form:input id="id" path="id" type="text" class="form:input-large"/>
 						<form:errors path="id" cssClass="text-danger"/>
@@ -104,8 +104,34 @@
 						</div>
 					</div>
 				</div>
+				<section class="container">
+					<legend>Address</legend>
+					<div class="form-group">
+						<label class="control-label col-lg-2" for="street">Street</label>
+						<div class="col-lg-10">
+							<form:input id="street" path="address.street" type="text" class="form:input-large"/>
+							<form:errors path="address.street" cssClass="text-danger"/>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-lg-2" for="zipcode">Zip Code</label>
+						<div class="col-lg-10">
+							<form:input id="zipcode" path="address.zipcode" type="text" class="form:input-large"/>
+							<form:errors path="address.zipcode" cssClass="text-danger"/>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-lg-2" for="city">City</label>
+						<div class="col-lg-10">
+							<form:input id="city" path="address.city" type="text" class="form:input-large"/>
+							<form:errors path="address.city" cssClass="text-danger"/>
+						</div>
+					</div>
+				</section>
  
- 							<form:hidden path="userCredentials.enabled" value="TRUE"  />
+ 				<form:hidden path="userCredentials.enabled" value="TRUE"  />
  
 
 				<div class="form-group">

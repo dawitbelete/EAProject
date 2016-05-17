@@ -1,11 +1,6 @@
 package edu.mum.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -23,6 +17,11 @@ import javax.persistence.Version;
 @Entity
 @Table(name = "USERS")
 public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3855561356507854561L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,8 +50,8 @@ public class User implements Serializable {
 	@JoinColumn(name = "userId")
 	private UserCredentials userCredentials;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "user")
-	private Set<Address> addresses = new HashSet<Address>();
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "user")
+	private Address address = new Address();
 	
 	public Long getId() {
 		return id;
@@ -110,12 +109,12 @@ public class User implements Serializable {
 		this.userCredentials = userCredentials;
 	}
 
-	public Set<Address> getAddresses() {
-		return addresses;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAddresses(Set<Address> addresses) {
-		this.addresses = addresses;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 //	public Set<Item> getBoughtItems() {
@@ -129,9 +128,4 @@ public class User implements Serializable {
 //	public void addBoughtItem(Item boughtItem) {
 //		this.boughtItems.add(boughtItem);
 //	}
-
-	public void addAddress(Address address) {
-		this.addresses.add(address);
-		address.setUser(this);
-	}
 }
