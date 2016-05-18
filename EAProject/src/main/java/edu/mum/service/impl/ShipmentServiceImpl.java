@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.dao.ShipmentDao;
 import edu.mum.domain.Shipment;
-import edu.mum.service.MessageSender;
 import edu.mum.service.ShipmentService;
 
 @Service
