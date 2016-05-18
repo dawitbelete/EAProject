@@ -63,10 +63,10 @@
 					</div>
 				</div>
 
-<!-- 				<div class="form-group"> -->
-<%-- 					<label class="control-label col-lg-2" for="category"><spring:message code="addItem.form.category.label" /></label> --%>
-<%-- 					<form:select id="category" path="categories" items="${categoriesList}" itemLabel="name" multiple="true" itemValue="id"/> --%>
-<!-- 				</div> -->
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="category"><spring:message code="addItem.form.category.label" /></label>
+					<form:select id="category" path="categories" items="${categoriesList}" itemLabel="name" multiple="true" itemValue="id"/>
+				</div>
 
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">

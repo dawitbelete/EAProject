@@ -27,9 +27,8 @@
 							<h3>${item.name}</h3>
 							<p>${item.description}</p>
 							<p>${item.initialPrice}USD</p>
- 							<p>
-								<a
-									href=" <spring:url value="/items/item?id=${item.id}" /> "
+							<p>
+								<a href=" <spring:url value="/items/item?id=${item.id}" /> "
 									class="btn btn-primary"> <span
 									class="glyphicon-info-sign glyphicon" /></span> Details
 								</a>
@@ -41,5 +40,10 @@
 			</c:forEach>
 		</div>
 	</section>
+	<center>
+		<p>
+			<button type=button onclick=window.location.href="<spring:url value="/welcome" />">Home</button>
+		</p>
+	</center>
 </body>
 </html>

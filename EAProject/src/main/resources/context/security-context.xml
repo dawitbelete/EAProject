@@ -32,4 +32,5 @@
 				authorities-by-username-query="select u1.username, u2.authority from CREDENTIALS u1, Authority u2 where u1.username = u2.username and u1.username =?" />
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
 </beans>
