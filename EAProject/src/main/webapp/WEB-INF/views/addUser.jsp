@@ -23,13 +23,6 @@
 				<legend>Add new user</legend>
 
 				<form:errors path="*" cssClass="alert alert-danger" element="div"/>
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="id">User Id</label>
-					<div class="col-lg-10">
-						<form:input id="id" path="id" type="text" class="form:input-large"/>
-						<form:errors path="id" cssClass="text-danger"/>
-					</div>
-				</div>
 
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="firstName">First Name</label>
@@ -55,14 +48,6 @@
 					</div>
 				</div>
 
-<!-- 				<div class="form-group"> -->
-<!-- 					<label class="control-label col-lg-2" for="title">Title</label> -->
-<!-- 					<div class="col-lg-10"> -->
-<%-- 						<form:input id="title" path="title" type="text" class="form:input-large"/> --%>
-<%-- 						<form:errors path="title" cssClass="text-danger"/> --%>
-<!-- 					</div> -->
-<!-- 				</div> -->
-
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="userName">User Name</label>
 					<div class="col-lg-10">
@@ -73,7 +58,6 @@
 					</div>
 				</div>
 
-	
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="password">Password</label>
 					<div class="col-lg-10">
@@ -95,15 +79,6 @@
 					</div>
 				</div>
 
-					<div class="form-group">
-					<label class="control-label col-lg-2" for="authority">Role</label>
-					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:input  path="userCredentials.authority[0].authority" type="text" value="ROLE_USER" class="form:input-large"/>
-							<form:errors path="userCredentials.authority[0].authority" cssClass="text-danger"/>
-						</div>
-					</div>
-				</div>
 				<section class="container">
 					<legend>Address</legend>
 					<div class="form-group">

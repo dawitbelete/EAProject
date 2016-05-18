@@ -1,5 +1,6 @@
 package edu.mum.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.dao.UserCredentialsDao;
+import edu.mum.domain.Authority;
 import edu.mum.domain.UserCredentials;
 
 @Service
@@ -17,6 +19,13 @@ public class UserCredentialsServiceImpl implements edu.mum.service.UserCredentia
 	private UserCredentialsDao userCredentialsDao;
 
 	public void save(UserCredentials userCredentials) {
+		Authority auth = new Authority();
+		if(userCredentials.getUser().isAdmin())
+			auth.setAuthority("ROLE_ADMIN");
+		else
+			auth.setAuthority("ROLE_USER");
+		auth.setUsername(userCredentials.getUsername());
+		userCredentials.addAuthority(auth);
 		userCredentialsDao.save(userCredentials);
 	}
 

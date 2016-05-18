@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "USERS")
@@ -32,12 +37,16 @@ public class User implements Serializable {
 	private int version = 0;
 
 	@Column(name = "FIRSTNAME", nullable = false)
+	@NotEmpty
 	private String firstName;
 
 	@Column(name = "LASTNAME", nullable = false)
+	@NotEmpty
 	private String lastName;
 
 	@Column(name = "EMAIL", nullable = false)
+	@NotEmpty
+	@Pattern(regexp="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$")
 	private String email;
 
 	@Column(name = "RANK", nullable = false)
@@ -48,9 +57,13 @@ public class User implements Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
+	@Embedded
+	@Valid
 	private UserCredentials userCredentials;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "user")
+	@Embedded
+	@Valid
 	private Address address = new Address();
 	
 	public Long getId() {
@@ -107,6 +120,7 @@ public class User implements Serializable {
 
 	public void setUserCredentials(UserCredentials userCredentials) {
 		this.userCredentials = userCredentials;
+		this.userCredentials.setUser(this);
 	}
 
 	public Address getAddress() {

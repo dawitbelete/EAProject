@@ -19,9 +19,5 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 	     
 		Query query = entityManager.createQuery("select u from User u  where u.email =:email");
 		return (User) query.setParameter("email", email).getSingleResult();
-			     
-
 	}
-
-
  }

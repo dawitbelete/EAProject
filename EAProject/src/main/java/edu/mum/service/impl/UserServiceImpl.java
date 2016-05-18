@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.dao.UserDao;
 import edu.mum.domain.User;
+import edu.mum.domain.UserCredentials;
 import edu.mum.service.UserCredentialsService;
 import edu.mum.service.UserService;
 
@@ -22,6 +23,9 @@ public class UserServiceImpl implements UserService {
 	UserCredentialsService credentialsService;
 
 	public void save(User user) {
+//		UserCredentials userCredentials = credentialsService.findByUserName(user.getUserCredentials().getUsername());
+//		if(userCredentials != null)
+//			throw 
 		userDao.save(user);
 	}
 
@@ -56,6 +60,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void saveFull(User user) {
+		user.setAdmin(false);
 		credentialsService.save(user.getUserCredentials());
 		userDao.update(user);
 	}
