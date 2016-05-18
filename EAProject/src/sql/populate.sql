@@ -11,10 +11,9 @@ INSERT INTO users (firstname,lastname,email,rank,userid,IS_ADMIN,version) VALUES
 INSERT INTO users (firstname,lastname,email,rank,userid,IS_ADMIN,version) VALUES ('Admin1','Admin1','admin1@mum.edu',2,'admin1',1,1);
 INSERT INTO users (firstname,lastname,email,rank,userid,IS_ADMIN,version) VALUES ('Allen','Rench','allen@rench.com',3,'guest',0,1);
 
-INSERT INTO item (ITEM_ID,APPROVAL_DATETIME,CREATED,DESCRIPTION,END_DATE,initialPrice,ITEM_NAME,reservePrice,START_DATE,OBJ_VERSION,itemSellerId) VALUES (1,NULL,'2016-05-16 14:04:30','6 foot tall spider man figure',NULL,19.95,'Ant Man Figure',NULL,NULL,1,NULL);
-INSERT INTO item (ITEM_ID,APPROVAL_DATETIME,CREATED,DESCRIPTION,END_DATE,initialPrice,ITEM_NAME,reservePrice,START_DATE,OBJ_VERSION,itemSellerId) VALUES (2,NULL,'2016-05-16 14:05:41','6 foot tall spiderman figure',NULL,19.95,'Spiderman Figure',NULL,NULL,0,NULL);
+INSERT INTO item (ITEM_ID,APPROVAL_DATETIME,CREATED,DESCRIPTION,END_DATE,initialPrice,ITEM_NAME,reservePrice,START_DATE,OBJ_VERSION,itemSellerId) VALUES (1,NULL,'2016-05-16 14:04:30','2 feet tall ant man figure',NULL,19.95,'Ant Man Figure',NULL,NULL,1,NULL);
+INSERT INTO item (ITEM_ID,APPROVAL_DATETIME,CREATED,DESCRIPTION,END_DATE,initialPrice,ITEM_NAME,reservePrice,START_DATE,OBJ_VERSION,itemSellerId) VALUES (2,NULL,'2016-05-16 14:05:41','2 feet tall spiderman figure',NULL,19.95,'Spiderman Figure',NULL,NULL,0,NULL);
 INSERT INTO item (ITEM_ID,APPROVAL_DATETIME,CREATED,DESCRIPTION,END_DATE,initialPrice,ITEM_NAME,reservePrice,START_DATE,OBJ_VERSION,itemSellerId) VALUES (3,NULL,'2016-05-16 14:05:43','NBA Legends',NULL,15.95,'NBA Legends',NULL,NULL,0,NULL);
-
 
 INSERT INTO address(id,city,street,zipcode,user_USER_ID) VALUES (1,'FAIRFIELD','802 S 9th Street',52556,1);
 

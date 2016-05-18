@@ -80,5 +80,17 @@ public class ItemController {
 
 		return "redirect:/items";
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String searchItems(Model model, @RequestParam("itemId") String id, @RequestParam("itemName") String name) {
 
+		if(!id.isEmpty()){
+			System.out.println("id:"+id);
+		}
+		if(!name.isEmpty()){
+			System.out.println("name:"+name);
+		}
+		
+		return "items";
+	}
 }
