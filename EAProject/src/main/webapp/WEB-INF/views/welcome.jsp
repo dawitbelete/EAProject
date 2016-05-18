@@ -11,10 +11,10 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
+			<p><img src="<spring:url value="/resource/images/logo.jpg"  htmlEscape="true" />" alt="GoodFellas!!!"  /></p>
 				<h1> ${greeting} </h1>
 				<p> ${tagline} </p>
   					Welcome  ${user.firstName} !
- 
 			</div>	 
  
 				  <div class="container">
