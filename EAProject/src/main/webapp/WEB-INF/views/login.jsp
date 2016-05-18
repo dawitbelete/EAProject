@@ -5,13 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Items</title>
+<title>Login</title>
 </head>
 <body>
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Welcome GoodFella!! </h1>
+				<h1>Welcome Kimosabe!! </h1>
 			</div>
 		</div>
 	</section>
@@ -28,7 +28,8 @@
 						<spring:message code="AbstractUserDetailsAuthenticationProvider.badCredentials"/><br />
 					</div>
 				</c:if>
-			    	<form action="<spring:url value="/postLogin"></spring:url>" method="post">
+					<c:url var="loginUrl" value="/login" />
+			    	<form action="${loginUrl}" method="post">
   					<sec:csrfInput />
                     <fieldset>
 			    	  	<div class="form-group">
@@ -38,6 +39,8 @@
 			    			<input class=" form:input-large" placeholder="Password" name='password'  type="password" value="">
 			    		</div>
 			    		<input class="btn btn-lg btn-success btn-mini" type="submit" value="Login">
+			    		<input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}" />
+                             
 			    	</fieldset>
 			      	</form>
 			    </div>
