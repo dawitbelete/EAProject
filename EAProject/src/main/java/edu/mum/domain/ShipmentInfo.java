@@ -1,9 +1,15 @@
 package edu.mum.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ShipmentInfo {
+public class ShipmentInfo implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6564672543958179417L;
+
 	String guide;
 	
 	int shipmentdays;
@@ -16,9 +22,13 @@ public class ShipmentInfo {
 	
 	String clientCompany;
 	
+	String item;
+	
 	String addresee;
 	
 	String address;
+	
+	String emailAdressee;
 
 	public String getGuide() {
 		return guide;
@@ -82,5 +92,21 @@ public class ShipmentInfo {
 
 	public void setReference(int reference) {
 		this.reference = reference;
+	}
+
+	public String getEmailAdressee() {
+		return emailAdressee;
+	}
+
+	public void setEmailAdressee(String emailAdressee) {
+		this.emailAdressee = emailAdressee;
+	}
+
+	public String getItem() {
+		return item;
+	}
+
+	public void setItem(String item) {
+		this.item = item;
 	}
 }

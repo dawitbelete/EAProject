@@ -38,6 +38,7 @@ public class StoreController {
 		User buyer =(User) session.getAttribute("user");
 		item.setBuyer(buyer);
 		model.addAttribute("item", item);
+		session.setAttribute("sitem", item);
 		
 		Shipment shipment = new Shipment();
 		
@@ -49,11 +50,16 @@ public class StoreController {
 	}
  	
  	@RequestMapping("/ship")
-	public String sendOrder(@ModelAttribute("newShipment") Shipment shipment) {
+	public String sendOrder(@ModelAttribute("newShipment") Shipment shipment, HttpSession session) {
+ 		Item item =(Item)session.getAttribute("sitem");
+		User buyer =(User)session.getAttribute("user");
+		item.setBuyer(buyer);
  		
+		shipment.setItem(item);
+		shipment.setUser(buyer);
  		topicMessageSender.sendMessage(shipment.getShipmentInfo());
  		
-		return "sent";
+		return "success";
 	}
  	
  	

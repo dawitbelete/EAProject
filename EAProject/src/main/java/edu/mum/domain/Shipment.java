@@ -71,11 +71,29 @@ public class Shipment {
 		shippingfo.setReference(getReference(1000, 5000));
 		shippingfo.setShipmentdays(5);
 		shippingfo.setFromDate(LocalDate.now());
+		shippingfo.setEmailAdressee(this.getUser().getEmail());
+		shippingfo.setItem(this.getItem().getName());
 		return shippingfo;
 	}
 
 	private static int getReference(int min, int max) {
 		Random r = new Random();
 		return r.ints(min, (max + 1)).findFirst().getAsInt();
+	}
+
+	public int getMaxShippingDays() {
+		return maxShippingDays;
+	}
+
+	public void setMaxShippingDays(int maxShippingDays) {
+		this.maxShippingDays = maxShippingDays;
+	}
+
+	public String getGuide() {
+		return guide;
+	}
+
+	public void setGuide(String guide) {
+		this.guide = guide;
 	}
 }

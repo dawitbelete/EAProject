@@ -16,12 +16,12 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>Shipment</h1>
-				<p>Our shipping policies establish that the items will be delivered within the next ${newShipment.maxmaxShippingDays} business days</p>
+				<p>Our shipping policies establish that the items will be delivered within the next ${newShipment.maxShippingDays} business days</p>
 			</div>
 		</div>
 	</section>
 	<section class="container">
-		<form:form modelAttribute="newShipment" action="/store/ship" class="form-horizontal">
+		<form:form modelAttribute="newShipment" action="ship" class="form-horizontal">
 			<fieldset>
 				<legend>Settings for the shipment</legend>
 
