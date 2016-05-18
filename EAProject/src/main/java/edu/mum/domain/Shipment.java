@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
 
 @Entity
 public class Shipment {
@@ -23,6 +24,7 @@ public class Shipment {
 	@OneToOne(fetch = FetchType.EAGER)
 	User user;
 
+	@Valid
 	@OneToOne(fetch = FetchType.EAGER)
 	Address address;
 

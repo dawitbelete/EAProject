@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import java.io.Serializable;
@@ -32,12 +35,15 @@ public class Address implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id = null;
 
+	@NotEmpty
 	@Column(length = 255, nullable = false)
 	private String street;
 
+	@NotEmpty
 	@Column(length = 16, nullable = false)
 	private String zipcode;
-
+	
+	@NotEmpty
 	@Column(length = 255, nullable = false)
 	private String city;
 

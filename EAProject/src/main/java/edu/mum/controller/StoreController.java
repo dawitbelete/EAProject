@@ -1,10 +1,12 @@
 package edu.mum.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,39 +52,23 @@ public class StoreController {
 	}
  	
  	@RequestMapping("/ship")
-	public String sendOrder(@ModelAttribute("newShipment") Shipment shipment, HttpSession session) {
+	public String sendOrder(Model model, @ModelAttribute("newShipment") @Valid Shipment shipment, BindingResult result, HttpSession session) {
  		Item item =(Item)session.getAttribute("sitem");
 		User buyer =(User)session.getAttribute("user");
 		item.setBuyer(buyer);
  		
 		shipment.setItem(item);
 		shipment.setUser(buyer);
+		
+		model.addAttribute("newShipment", shipment);
+ 		
+ 		if(result.hasErrors()) {
+			return "shipment";
+		}
+ 		
  		topicMessageSender.sendMessage(shipment.getShipmentInfo());
  		
 		return "success";
 	}
- 	
- 	
-// 	@Autowired
-// 	private CreditCardRemoteService creditService;
-// 	
-// 	@RequestMapping("/payment")
-// 	public String getPaymentPage(@ModelAttribute("item") Item newItem, HttpSession session){
-// 		User user = (User) session.getAttribute("user");
-// 		
-//		return "billing";
-// 		
-// 	}
-// 	
-// 	@RequestMapping("/processPayment")
-// 	public String getPaymentPage(@ModelAttribute("creditData") CreditCard creditcard){
-// 		//code
-// 		//Call to the service
-// 		creditService.send(creditCard);
-// 		System.out.println("Success");
-// 		
-//		return "shipment";
-// 		
-// 	}
  	
 }
