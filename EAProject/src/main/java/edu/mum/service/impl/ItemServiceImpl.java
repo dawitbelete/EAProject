@@ -1,5 +1,7 @@
 package edu.mum.service.impl;
 
+import java.math.BigDecimal;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,14 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.findBySellerOrBuyer(sellerId, buyerId);
 	}
 
-	
+	public List<Item> findByName(String name,BigDecimal initialPrice, BigDecimal initialPriceMax) {
+		return (List<Item>)itemDao.findByName(name,initialPrice,initialPriceMax);
+	}
+
+	@Override
+	public List<Item> findByName(String name, BigDecimal initialPrice) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

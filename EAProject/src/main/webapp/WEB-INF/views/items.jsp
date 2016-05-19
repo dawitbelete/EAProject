@@ -23,10 +23,17 @@
 		<sec:csrfInput />
 			<div class="container">
 				<div class="row">
-					<div class="input-group col-md-3">
+				
+				Minimum Price:<div class="input-group col-md-3">
 						<input id="itemid" type="text" class="form-control input-lg"
-							placeholder="Search by Item Id" name="itemId" />
+							placeholder="Search by Item price" name="minPrice" />
 					</div>
+					
+					Maximum Price:<div class="input-group col-md-3">
+						<input id="itemid2" type="text" class="form-control input-lg"
+							placeholder="Search by Item price" name="maxPrice" />
+					</div>
+					
 					<div class="input-group col-md-3">
 						<input id="itemname" type="text" class="form-control input-lg" 
 							placeholder="Search by Item Name" name="itemName" />
