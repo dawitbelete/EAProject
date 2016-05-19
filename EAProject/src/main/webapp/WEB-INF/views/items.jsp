@@ -25,13 +25,13 @@
 			<div class="container">
 				<div class="row">
 
-					<div class="input-group col-md-3">
+					<div class="input-group col-md-2">
 						Minimum Price: <input id="itemid" type="text"
 							class="form-control input-lg" placeholder="Search by Item price"
 							name="minPrice" />
 					</div>
 
-					<div class="input-group col-md-3">
+					<div class="input-group col-md-2">
 						Maximum Price: <input id="itemid2" type="text"
 							class="form-control input-lg" placeholder="Search by Item price"
 							name="maxPrice" />
