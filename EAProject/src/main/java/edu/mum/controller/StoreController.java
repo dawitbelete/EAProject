@@ -52,7 +52,7 @@ public class StoreController {
 		shipment.setUser(buyer);
 		model.addAttribute("newShipment", shipment);
 		
-		return "shipment";
+		return "forward:/payment";
 	}
  	
  	@RequestMapping("/ship")
