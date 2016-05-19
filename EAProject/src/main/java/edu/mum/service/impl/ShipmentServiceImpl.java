@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.mum.dao.AddressDao;
 import edu.mum.dao.ShipmentDao;
 import edu.mum.domain.Shipment;
+import edu.mum.domain.User;
 import edu.mum.service.ShipmentService;
 
 @Service
@@ -16,6 +18,9 @@ public class ShipmentServiceImpl implements ShipmentService {
 
 	@Autowired
 	ShipmentDao shipmentDao;
+	
+	@Autowired
+	AddressDao addressDao;
 	
 	@Override
 	public void save(Shipment t) {
@@ -40,6 +45,11 @@ public class ShipmentServiceImpl implements ShipmentService {
 	@Override
 	public void delete(Long id) {
 		shipmentDao.delete(id);
+	}
+	
+	public void saveFull(Shipment shipment) {
+		addressDao.save(shipment.getAddress());
+		update(shipment);
 	}
 
 }

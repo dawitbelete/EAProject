@@ -16,4 +16,6 @@ public interface ShipmentService {
 
 	public void delete(Long id);
 	
+	public void saveFull(Shipment shipment);
+	
 }

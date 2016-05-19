@@ -16,6 +16,7 @@ import edu.mum.domain.Shipment;
 import edu.mum.domain.User;
 import edu.mum.service.ItemService;
 import edu.mum.service.MessageSender;
+import edu.mum.service.ShipmentService;
 
 @Controller
 @RequestMapping("/store")
@@ -23,6 +24,9 @@ public class StoreController {
 
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	private ShipmentService shipmentService;
 	
 	@Autowired
 	MessageSender topicMessageSender;
@@ -67,6 +71,8 @@ public class StoreController {
 		}
  		
  		topicMessageSender.sendMessage(shipment.getShipmentInfo());
+ 		
+ 		shipmentService.saveFull(shipment);
  		
 		return "success";
 	}
