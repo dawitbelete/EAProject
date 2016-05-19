@@ -47,8 +47,8 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.findBySellerOrBuyer(sellerId, buyerId);
 	}
 
-	public List<Item> findByName(String name,BigDecimal initialPrice, BigDecimal initialPriceMax) {
-		return (List<Item>)itemDao.findByName(name,initialPrice,initialPriceMax);
+	public List<Item> findByName(String name,BigDecimal initialPrice, BigDecimal initialPriceMax, String category) {
+		return (List<Item>)itemDao.findByName(name,initialPrice,initialPriceMax, category);
 	}
 
 	@Override

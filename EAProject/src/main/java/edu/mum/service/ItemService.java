@@ -21,6 +21,6 @@ public interface ItemService{
 	
 	public List<Item> findByName(String name,BigDecimal initialPrice);
 
-	public List<Item> findByName(String name, BigDecimal initialPriceMin, BigDecimal initialPriceMax);
+	public List<Item> findByName(String name,BigDecimal initialPrice, BigDecimal initialPriceMax, String category); 
 
 }

@@ -48,6 +48,8 @@ public class ItemController {
 	@RequestMapping({ "", "/all" })
 	public String list(Model model) {
 		model.addAttribute("items", itemService.findAll());
+		List<Category> categories = categoryService.findAll();
+		model.addAttribute("categoriesList", categories);
 		return "items";
 	}
 
@@ -83,7 +85,8 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String searchItems(Model model, @RequestParam("minPrice") String minPrice, @RequestParam("maxPrice") String maxPrice, @RequestParam("itemName") String name) {
+	public String searchItems(Model model, @RequestParam("minPrice") String minPrice, @RequestParam("maxPrice") String maxPrice,
+			@RequestParam("itemName") String name, @RequestParam("itemCategory") String category) {
 		
 //		if(!id.isEmpty()){
 //			System.out.println("id:"+id);
@@ -93,11 +96,13 @@ public class ItemController {
 //		}
 		BigDecimal initialPriceMin=null;
 		BigDecimal initialPriceMax=null;
-		if((minPrice!=null && !minPrice.equals("")) ||( maxPrice!=null && !maxPrice.equals(""))){
+		if(minPrice!=null && !minPrice.equals("")){
 			initialPriceMin =new BigDecimal(minPrice);
+		}
+		if( maxPrice!=null && !maxPrice.equals("")){
 			initialPriceMax=new BigDecimal(maxPrice);
 		}
-		List<Item> items=(List<Item>) itemService.findByName(name,initialPriceMin,initialPriceMax);
+		List<Item> items=(List<Item>) itemService.findByName(name,initialPriceMin,initialPriceMax, category);
 		model.addAttribute("items", items);
 		
 		return "items";

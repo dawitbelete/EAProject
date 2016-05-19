@@ -53,7 +53,7 @@ public class ItemDaoImpl extends GenericDaoImpl<Item> implements ItemDao {
 			return (Item)  entityManager.createQuery( query ).getSingleResult();
 		}*/	
 		
-		public List<Item> findByName(String name, BigDecimal initialPrice, BigDecimal initialPriceMax) {
+		public List<Item> findByName(String name, BigDecimal initialPrice, BigDecimal initialPriceMax, String category) {
 		    CriteriaBuilder qb = entityManager.getCriteriaBuilder();
 		    CriteriaQuery query = qb.createQuery();
 		    Root<Item> itemRoot = query.from(Item.class);
@@ -65,13 +65,19 @@ public class ItemDaoImpl extends GenericDaoImpl<Item> implements ItemDao {
 		                qb.equal(itemRoot.get("name"), name));
 		        	//	(Predicate) query.where(qb.equal(itemRoot.get("name"),  name) ));
 		    }
+		    
+		    if ((category != null) && (!(category.isEmpty()))) {
+		        predicates.add(
+		                qb.equal(itemRoot.get("category"), category));
+		        	//	(Predicate) query.where(qb.equal(itemRoot.get("name"),  name) ));
+		    }
 		    if (initialPrice != null) {
 		        predicates.add(
 		                qb.greaterThan(itemRoot.get("initialPrice"), initialPrice));
 		    }
 		    if (initialPriceMax != null) {
 		        predicates.add(
-		                qb.lessThan(itemRoot.get("initialPrice"), initialPrice));
+		                qb.lessThan(itemRoot.get("initialPrice"), initialPriceMax));
 		    }
 		    //query itself
 		    query.select(itemRoot)

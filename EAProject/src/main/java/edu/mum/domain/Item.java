@@ -1,6 +1,7 @@
 package edu.mum.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -26,6 +27,7 @@ public class Item {
 	@Column(name = "OBJ_VERSION")
 	private int version = 0;
 
+	@NotEmpty
 	@Column(name = "ITEM_NAME", length = 255, nullable = false, updatable = false)
 	private String name;
 
@@ -40,6 +42,7 @@ public class Item {
 	@Column(name = "DESCRIPTION", length = 4000, nullable = false)
 	private String description;
 
+	@NotNull
 	private BigDecimal initialPrice;
 
 	private BigDecimal reservePrice;

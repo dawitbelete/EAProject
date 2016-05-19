@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -20,28 +21,35 @@
 	<section>
 
 		<form action="search" method="post">
-		<sec:csrfInput />
+			<sec:csrfInput />
 			<div class="container">
 				<div class="row">
-				
-				Minimum Price:<div class="input-group col-md-3">
-						<input id="itemid" type="text" class="form-control input-lg"
-							placeholder="Search by Item price" name="minPrice" />
-					</div>
-					
-					Maximum Price:<div class="input-group col-md-3">
-						<input id="itemid2" type="text" class="form-control input-lg"
-							placeholder="Search by Item price" name="maxPrice" />
-					</div>
-					
+
 					<div class="input-group col-md-3">
-						<input id="itemname" type="text" class="form-control input-lg" 
-							placeholder="Search by Item Name" name="itemName" />
+						Minimum Price: <input id="itemid" type="text"
+							class="form-control input-lg" placeholder="Search by Item price"
+							name="minPrice" />
 					</div>
-					<span class="input-group-btn">
-						<input type="submit" id="btnSearch" class="btn btn-primary" value="Search" />
-					</span>
-					<input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}" />
+
+					<div class="input-group col-md-3">
+						Maximum Price: <input id="itemid2" type="text"
+							class="form-control input-lg" placeholder="Search by Item price"
+							name="maxPrice" />
+					</div>
+
+					<div class="input-group col-md-3">
+						Name:<input id="itemname" type="text"
+							class="form-control input-lg" placeholder="Search by Item Name"
+							name="itemName" />
+					</div>
+					<div class="input-group col-md-3">
+						Category:<input id="itemncat" type="text" class="form-control input-lg"
+							placeholder="Search by Item Category" name="itemCategory" />
+					</div>
+					<span class="input-group-btn"> <input type="submit"
+						id="btnSearch" class="btn btn-primary" value="Search" />
+					</span> <input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 				</div>
 			</div>
 		</form>

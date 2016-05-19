@@ -9,6 +9,6 @@ public interface ItemDao extends GenericDao<Item> {
       
 	public List<Item> findBySellerOrBuyer(Long sellerId,Long buyerId);
 	public List<Item> findByName(String name, BigDecimal initialPrice);
-	public List<Item> findByName(String name, BigDecimal initialPrice, BigDecimal initialPriceMax);
+	public List<Item> findByName(String name, BigDecimal initialPrice, BigDecimal initialPriceMax, String category);
 
 }
