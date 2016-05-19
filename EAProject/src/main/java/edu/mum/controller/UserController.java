@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.mum.domain.User;
+import edu.mum.service.UserCredentialsUserNameAlreadyExistsException;
 import edu.mum.service.UserService;
 
 @Controller
@@ -41,15 +42,19 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAddNewUserForm(@ModelAttribute("newUser") @Valid User userToBeAdded, BindingResult result) {
+	public String processAddNewUserForm(Model model, @ModelAttribute("newUser") @Valid User userToBeAdded, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return "addUser";
 		}
-
+		try{
 		// Error caught by ControllerAdvice IF no authorization...
-		userService.saveFull(userToBeAdded);
-
+			userService.saveFull(userToBeAdded);
+		}
+		catch(UserCredentialsUserNameAlreadyExistsException ex){
+			model.addAttribute("error", "User " + userToBeAdded.getUserCredentials().getUsername() +  " already exists!");
+			return "addUser";
+		}
 		return "redirect:/users";
 
 	}
